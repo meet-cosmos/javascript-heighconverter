@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            margin: auto;
+            padding: 0;
+            background-color: #101820FF;
+        }
+
+        #container {
+            width: 40%;
+            height: 350px;
+            margin: auto;
+            margin-top: 150px;
+            background-color: #F2AA4CFF;
+            border: 2px solid #F2AA4CFF;
+            border-radius: 10px
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        h4 {
+            text-align: center;
+        }
+
+        #inp-val {
+            height: 35px;
+            margin-left: 180px;
+            width: 200px;
+        }
+
+        button {
+            height: 35px;
+            color: #F2AA4CFF;
+            background-color: #101820FF;
+            margin-left: 25px;
+            width: 80px;
+            font-size: 16px;
+        }
+        #ans{
+            margin-top: 70px;
+            height: 100px;
+            background-color: #101820FF;
+            width: 98%;
+            margin-left: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #cm{
+            height: 30px;
+            margin-top: 10px;
+            margin-left: 50px;
+        }
+        #inch{
+            height: 30px;
+            margin-top: 10px;
+            margin-right: 50px;
+        }
+        p{
+            color: #F2AA4CFF;
+        }
+        #para1{
+            height: 10px;
+            margin-left: 50px;
+            font-size: 18px;
+        }
+        #para2{
+            height: 10px;
+            margin-left: 30px;
+            font-size: 18px
+        }
+        #err{
+            color: red;
+            text-align: center;
+        }
+        /* #cm_val{ */
+            /* color: #F2AA4CFF; */
+            /* margin-right: 100px; */
+        /* } */
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <h1>Height Converter</h1>
+        <h4>Enter your height in feet:</h4>
+        <input type="text" name="" id="inp-val" placeholder="Enter value in feet">
+        <button id="btn-convert" type="submit">Convert</button>
+        <p id="err"></p>
+        <div id="ans">
+            <div>
+            <p id="para1">Height in centimeters:</p>
+            <input type="text" id="cm">
+            </div>
+            <div>
+                <p id="para2">Height in inches:</p>
+            <input type="text" id="inch">
+            </div>
+        </div>
+    </div>
+    <script>
+        const convert = document.getElementById('btn-convert');
+        convert.addEventListener('click', function (e) {
+            const inp_val = document.getElementById('inp-val').value;
+            console.log("button")
+            // const new_inp_val = parseFloat(inp_val);
+            const height_in_cm = parseFloat(inp_val) * 30.48;
+            const height_in_inch = parseFloat(inp_val) * 12;
+            if (parseInt(inp_val) > 9) {
+                document.getElementById('err').innerHTML = "No such person exists in recorded history"
+            }
+            else if(parseInt(inp_val) < 0){
+                document.getElementById('err').innerHTML = "Please enter a valid number"
+            }
+             else {
+                document.getElementById("cm").value = Math.round(height_in_cm);
+                document.getElementById("inch").value = Math.round(height_in_inch);
+            }
+        })
+    </script>
+</body>
+
+</html>
